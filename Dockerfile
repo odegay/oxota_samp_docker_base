@@ -17,13 +17,15 @@ RUN apt-get install zip bash tar unzip screen wget -y
 RUN  apt-get update -y
 
 #INSTALL JAVA RUNTIME
-RUN apt-get install -y default-jre
-
-#INSTALL JAVA DK
-RUN apt-get install -y default-jdk
+RUN apt-get install default-jre:i386 -y
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-i386
+ENV LD_LIBRARY_PATH=.:/usr/lib/jvm/java-11-openjdk-i386/lib:/usr/lib/jvm/java-11-openjdk-i386/lib/client:/usr/lib/jvm/java-11-openjdk-i386/lib/server:/usr/local/lib
 
 #update
 RUN apt-get update && apt-get upgrade -y
+
+#CMD ["/bin/bash"]
+
 
 
 
